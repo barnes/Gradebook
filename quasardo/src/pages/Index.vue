@@ -11,21 +11,26 @@
         <div>
           <q-btn @click="onSubmit" label="Submit" type="submit" color="primary" />
         </div>
+        <q-btn @click="onOkay" label="okay" type="okay" color="secondary" />
     </div>
 
 
     <div class="q-px-xl q-ma-xl">
-      <q-card class="my-card">
-        <q-card-section class="bg-primary text-white">
-          <div class="text-h6">Task Content</div>
-        </q-card-section>
+      <q-list>
+        <q-item v-for="task in tasks" :key="task">
+          <q-card class="my-card">
+            <q-card-section class="bg-primary text-white">
+              <div class="text-h6">Task Content</div>
+            </q-card-section>
 
-        <q-separator />
+            <q-separator />
 
-        <q-card-actions align="left">
-          <q-btn flat>Task Complete</q-btn>
-        </q-card-actions>
-      </q-card>
+            <q-card-actions align="left">
+              <q-btn flat>Task Complete</q-btn>
+            </q-card-actions>
+          </q-card>
+        </q-item>
+      </q-list>
     </div>
 
 
@@ -40,18 +45,25 @@ export default {
   name: 'PageIndex',
   data() {
     return {
-      newTaskContent: ''
+      newTaskContent: '',
+      tasks: [
+        {task: "Task 1"},
+        {task: "Task 2"}
+      ]
     }
   },
   methods: {
     onSubmit() {
-      let newTask = {
-        content: this.newTaskContent,
-      }
       console.log(newTask)
+      // let newTask = {
+      //   content: this.newTaskContent,
+      // }
+      
       //this.newTaskContent = ''
+    },
+    onOkay() {
+      console.log('OKAY')
     }
-
   }
 }
 </script>

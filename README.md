@@ -7,4 +7,4 @@
 - Deploy to web and Android, test on both, maybe utilize daily. 
 
 ### 3/19/21
-Basic layout is there. A form, a card. Done. Starting to link the buttons to script actions, getting snagged.
+Basic layout is there. A form, a card. Done. Starting to link the buttons to script actions, getting snagged. Firebase installed, bootfile created, config in there.
