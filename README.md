@@ -8,3 +8,6 @@
 
 ### 3/19/21
 Basic layout is there. A form, a card. Done. Starting to link the buttons to script actions, getting snagged. Firebase installed, bootfile created, config in there.
+
+### 3/22/21
+Test page functional. Need to implment date and sorting by date. Add on from there. Firebase is running great.
