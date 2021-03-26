@@ -1,16 +1,16 @@
-# QuasarDo
-## A dead simple todo list using Quasar & Firebase.
+# Gradebook
+## A stupid fast, stupid simple performance based asssessment tool for project-based classrooms.
 
-- Quasar Frontend, basic layout. A home page, a completed page. 
-- Firebase Backend, dead simple schema, task, id, completed, dateAdded
-- Clean up, speed up. Find ways to make this run as fast as possible.
-- Deploy to web and Android, test on both, maybe utilize daily. 
+-Basic functionality / workflow is "Select a student, add a comment or tag and submit as positive of negative"
 
-### 3/19/21
-Basic layout is there. A form, a card. Done. Starting to link the buttons to script actions, getting snagged. Firebase installed, bootfile created, config in there.
+## Pages:
+* Class: See a grid of all students in a class, 
+* Student: See a students report over time, a cumultive score, all submitted notes.
+* Settings: Create a class, export reports, etc. Likely many sub-pages here. 
 
-### 3/22/21
-Test page functional. Need to implment date and sorting by date. Add on from there. Firebase is running great.
+## Schema:
+* Student: First Name, Last Name, Score, Grade, ID
+* Grade Entry: Student, Pos/Neg, Comment, Tag
 
-### 3/23/21 AM
-Categories started, dates functional. Need a selector with the ability to add a new option for category, feel like I've got it pretty close. Want to add sorting by category and by date. 
+### 03/26/21
+Scaffolding out the class view page. Using local data objects for the time being. Bringing in all needed Quasar features, getting actions to work well. Next step when the page looks good is to import data from Firebase, and save data to Firebase.

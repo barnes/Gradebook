@@ -1,8 +1,8 @@
 {
-  "name": "quasardo",
+  "name": "gradebook",
   "version": "0.0.1",
-  "description": "Simple todo app using Quasar & Firebase.",
-  "productName": "QuasarDo",
+  "description": "Simple grading application",
+  "productName": "Gradebook",
   "author": "Ryan Barnes <rybarnes@gmail.com>",
   "private": true,
   "scripts": {

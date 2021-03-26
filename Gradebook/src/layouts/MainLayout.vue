@@ -4,7 +4,7 @@
     <q-header bordered class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-toolbar-title>
-          QuasarDo
+          Gradebook
         </q-toolbar-title>
       </q-toolbar>
 
