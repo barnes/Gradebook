@@ -57,7 +57,6 @@ export default {
     newEntryPos(studentID){
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
-        score: 1,
         comment: this.newComment
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
@@ -68,11 +67,24 @@ export default {
          console.error("Error adding document: ", error)
        });
        this.newComment = ''
+
+       let studentRef = db.collection("students").doc(studentID);
+       let newScore = this.popoverData.score+1;
+       this.popoverData.score = newScore;
+       return studentRef.update({
+         score: newScore
+       })
+       .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
     },
     newEntryNeg(studentID){
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
-        score: -1,
         comment: this.newComment
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
@@ -83,6 +95,21 @@ export default {
          console.error("Error adding document: ", error)
        });
        this.newComment = ''
+
+       let studentRef = db.collection("students").doc(studentID);
+       let newScore = this.popoverData.score-1;
+       this.popoverData.score = newScore;
+       return studentRef.update({
+         score: newScore
+       })
+       .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+      
     }
 
   },
@@ -98,6 +125,8 @@ export default {
             }
             if (change.type === "modified") {
                 console.log("Modified task: ", studentChange);
+                let index = this.students.findIndex(student => student.id === studentChange.id );
+                this.students[index].score = studentChange.score;
             }
             if (change.type === "removed") {
                 console.log("Removed task: ", studentChange);
