@@ -26,4 +26,6 @@ Class page fully functional. Scores live update on completing an entry. Next mov
 
 Student page is now loading great, links working from popover. Next step is ability to delete an entry from this page.
 
-Deleting entries works, but does not change score, that needs to be done still.
+Deleting entries works, but does not change score, that needs to be done still. Entries are NOT being removed on the server. No error being thrown, not sure why that is.
+
+Score is now being changed based on deletion, but currently the delete is still not removing the document from the DB.

@@ -5,6 +5,7 @@
         <q-list>
             <q-item v-for="entry in entries" :key="entry.id">
                 <h4>{{ entry.comment }}</h4>
+                <h8>{{ entry.score }}</h8>
                 <q-btn @click="deleteEntry(entry.id)" label="delete"/>
             </q-item>
         </q-list>
@@ -35,6 +36,33 @@ export default {
       deleteEntry(entryID){
         console.log(entryID);
         let index = this.entries.findIndex(entry => entry.id === entryID );
+        let studentRef = db.collection("students").doc(this.$route.params.id)
+        if(this.entries[index].score === 1){
+            console.log("pos");
+            studentRef.update({
+                score: this.student.score-1
+            })
+            .then(() => {
+                console.log("Document successfully updated!");
+            })
+            .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
+        }
+        if(this.entries[index].score === -1){
+            console.log("neg");
+            studentRef.update({
+                score: this.student.score+1
+            })
+            .then(() => {
+                console.log("Document successfully updated!");
+            })
+            .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
+        }
         db.collection("student").doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
             console.log("Document successfully deleted!");
         }).catch((error) => {

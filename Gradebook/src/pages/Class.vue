@@ -61,7 +61,8 @@ export default {
     newEntryPos(studentID){
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
-        comment: this.newComment
+        comment: this.newComment,
+        score: 1
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
@@ -89,7 +90,8 @@ export default {
     newEntryNeg(studentID){
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
-        comment: this.newComment
+        comment: this.newComment,
+        score: -1
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
