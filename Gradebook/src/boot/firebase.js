@@ -2,12 +2,13 @@ import firebase from "firebase/app"
 import "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBC68IHCg7vVp-YBeE2tBJT-o9ZExZ3JhQ",
-  authDomain: "playground-3832a.firebaseapp.com",
-  projectId: "playground-3832a",
-  storageBucket: "playground-3832a.appspot.com",
-  messagingSenderId: "763616160156",
-  appId: "1:763616160156:web:73e447d96a36192ffbc059"
+  apiKey: "AIzaSyCZ2dpJzaKrx54z6TvVkZ8H0xJDIeX3QJY",
+    authDomain: "gradebook-123b5.firebaseapp.com",
+    projectId: "gradebook-123b5",
+    storageBucket: "gradebook-123b5.appspot.com",
+    messagingSenderId: "1072810299529",
+    appId: "1:1072810299529:web:b1e3a121c6654e44887658"
+
 
 }
 

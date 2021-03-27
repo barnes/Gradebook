@@ -18,3 +18,5 @@ Scaffolding out the class view page. Using local data objects for the time being
 Styling of class page is complete mostly. Perhaps I could instead use these knob components, make it submitable directly on that page. 
 
 Going to bring in the class from Firebase now, and then start using the QDialog component for the popover element. 
+
+Firebase integrated, popover functional, form submitting new 'entry' collection to a student. Need to have that entries score pass back up to the students overall score. Should likely be done in the mount hook.

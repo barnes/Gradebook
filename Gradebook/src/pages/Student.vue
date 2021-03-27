@@ -1,0 +1,1 @@
+// Take in student ID, output all student entries.
