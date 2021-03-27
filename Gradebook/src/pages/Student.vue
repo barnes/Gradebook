@@ -5,7 +5,7 @@
         <q-list>
             <q-item v-for="entry in entries" :key="entry.id">
                 <h4>{{ entry.comment }}</h4>
-                <q-btn label="delete"/>
+                <q-btn @click="deleteEntry(entry.id)" label="delete"/>
             </q-item>
         </q-list>
     </q-page>
@@ -31,6 +31,16 @@ export default {
   methods: {
       test() {
           console.log(this.$route.params.id);
+      },
+      deleteEntry(entryID){
+        console.log(entryID);
+        let index = this.entries.findIndex(entry => entry.id === entryID );
+        db.collection("student").doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+        this.entries.splice(index,1)
       }
   },
   mounted() {
