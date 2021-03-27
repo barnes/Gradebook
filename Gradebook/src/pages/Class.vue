@@ -13,7 +13,8 @@
     >
       <q-card style="width: 700px; max-width: 80vw;">
         <q-card-section>
-          <div class="text-h6">{{ popoverData.firstName + ' ' + popoverData.lastName  }}</div>
+          <q-btn :to="studentLink" :label="popoverData.firstName + ' ' + popoverData.lastName" />
+          <h6>{{ popoverData.firstName + ' ' + popoverData.lastName  }}</h6>
         </q-card-section>
 
         <q-card-section align="center" >
@@ -42,7 +43,8 @@ export default {
         score: 0,
         id: ''
       },
-      newComment: '' 
+      newComment: '',
+      studentLink: '' 
     }
   },
   methods: {
@@ -53,6 +55,8 @@ export default {
       this.popoverData.lastName = this.students[index].lastName;
       this.popoverData.score = this.students[index].score; 
       this.popoverData.id = this.students[index].id;
+      this.studentLink = "student/" + this.students[index].id;
+      console.log(this.studentLink)
     },
     newEntryPos(studentID){
       let index = this.students.findIndex(student => student.id === studentID );

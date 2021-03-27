@@ -20,3 +20,8 @@ Styling of class page is complete mostly. Perhaps I could instead use these knob
 Going to bring in the class from Firebase now, and then start using the QDialog component for the popover element. 
 
 Firebase integrated, popover functional, form submitting new 'entry' collection to a student. Need to have that entries score pass back up to the students overall score. Should likely be done in the mount hook.
+
+### 03/27/21
+Class page fully functional. Scores live update on completing an entry. Next move is completing a 'Student' page that reports all entries. Afterward I will try to add in tags.
+
+Student page is now loading great, links working from popover. Next step is ability to delete an entry from this page.
