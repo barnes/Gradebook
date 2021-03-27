@@ -29,3 +29,6 @@ Student page is now loading great, links working from popover. Next step is abil
 Deleting entries works, but does not change score, that needs to be done still. Entries are NOT being removed on the server. No error being thrown, not sure why that is.
 
 Score is now being changed based on deletion, but currently the delete is still not removing the document from the DB.
+
+Delete now fully functional. It was a typo all along. 
+

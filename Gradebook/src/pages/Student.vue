@@ -5,7 +5,7 @@
         <q-list>
             <q-item v-for="entry in entries" :key="entry.id">
                 <h4>{{ entry.comment }}</h4>
-                <h8>{{ entry.score }}</h8>
+                <h6>{{ entry.score }}</h6>
                 <q-btn @click="deleteEntry(entry.id)" label="delete"/>
             </q-item>
         </q-list>
@@ -30,11 +30,7 @@ export default {
     }
   },
   methods: {
-      test() {
-          console.log(this.$route.params.id);
-      },
       deleteEntry(entryID){
-        console.log(entryID);
         let index = this.entries.findIndex(entry => entry.id === entryID );
         let studentRef = db.collection("students").doc(this.$route.params.id)
         if(this.entries[index].score === 1){
@@ -63,12 +59,13 @@ export default {
                 console.error("Error updating document: ", error);
             });
         }
-        db.collection("student").doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
+        db.collection("students").doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
             console.log("Document successfully deleted!");
+            console.log(entryID)
+            //this.entries.splice(index,1)
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
-        this.entries.splice(index,1)
       }
   },
   mounted() {
@@ -94,6 +91,8 @@ export default {
             }
             if (change.type === "removed") {
                 console.log("Removed task: ", entryChange);
+                let index = this.entries.findIndex(entry => entry.id === entryChange.id);
+                this.entries.splice(index,1)
             }
         });
     });
