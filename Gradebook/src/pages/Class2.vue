@@ -1,12 +1,7 @@
+// Refactored version, breaking into components.
 <template>
-<q-page>
-  
-
-  <div class="q-pa-md row text-white q-gutter-md">
-    <div v-for="student in students" :key="student.name" @click="popoverLaunch(student.id)">
-      <q-btn round size="3rem" color="primary" :label="student.firstName.charAt(0) + student.lastName.charAt(0)" />
-    </div>
-  </div>
+<q-page> 
+  <classList></classList>
 
   <q-dialog v-model="popover">
       <q-card style="width: 700px; max-width: 80vw;">
@@ -16,11 +11,7 @@
 
         <q-card-section align="center" >
           <q-btn @click="newEntryPos(popoverData.id)" round size="3rem" color="primary" label="+" class="q-pa-sm" name="pos"/>
-          <q-input outlined v-model="newComment" label="comment"  class="q-pa-sm" />
-          <q-input outlined v-model="tagDisplay"  label="tags" class="q-pa-sm" disable />
-          <q-item v-for="(tag) in tags" :key="tag.id">
-            <q-btn :label="tag.tag" size="sm" @click="addTag(tag.tag)" />
-          </q-item>
+          <q-input outlined v-model="newComment"  class="q-pa-sm" />
           <q-btn @click="newEntryNeg(popoverData.id)" round size="3rem" color="primary" label="-" class="q-pa-sm" name="neg"/>
           <h4>Current Score: {{ popoverData.score }}</h4>
         </q-card-section>
@@ -33,12 +24,14 @@
 
 <script>
 import db from '../boot/firebase'
-import studentEntry from '../components/studentEntry'
+import classList from '../components/classList.vue'
 export default {
+  components: {
+    classList
+  },
   data () {
     return{
       students: [],
-      tags: [],
       popover: false,
       popoverData: {
         firstName: '',
@@ -47,22 +40,10 @@ export default {
         id: ''
       },
       newComment: '',
-      tagDisplay: [],
-      newTagList: [],
       studentLink: '' 
     }
   },
   methods: {
-    addTag(tag){
-      if(this.newTagList.includes(tag)){
-        let index=this.newTagList.findIndex(tagIn => tagIn === tag );
-        this.newTagList.splice(index,1);
-      } else {
-        this.newTagList.push(tag);
-      }
-      console.log(this.newTagList)
-      this.tagDisplay = this.newTagList;
-    },
     popoverLaunch(studentID){
       this.popover = true;
       let index = this.students.findIndex(student => student.id === studentID );
@@ -77,8 +58,7 @@ export default {
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
         comment: this.newComment,
-        score: 1,
-        tags: this.newTagList
+        score: 1
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
@@ -87,8 +67,7 @@ export default {
        .catch((error) => {
          console.error("Error adding document: ", error)
        });
-       this.newComment = '';
-       this.newTagList = [];
+       this.newComment = ''
 
        let studentRef = db.collection("students").doc(studentID);
        let newScore = this.popoverData.score+1;
@@ -108,8 +87,7 @@ export default {
       let index = this.students.findIndex(student => student.id === studentID );
       let newEntry = {
         comment: this.newComment,
-        score: -1,
-        tags: newTagList
+        score: -1
       }
       db.collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
@@ -118,8 +96,7 @@ export default {
        .catch((error) => {
          console.error("Error adding document: ", error)
        });
-       this.newComment = '';
-       this.newTagList = [];
+       this.newComment = ''
 
        let studentRef = db.collection("students").doc(studentID);
        let newScore = this.popoverData.score-1;
@@ -145,34 +122,16 @@ export default {
           let studentChange = change.doc.data()
           studentChange.id = change.doc.id
             if (change.type === "added") {
-                console.log("New student ", studentChange);
+                console.log("New task ", studentChange);
                 this.students.unshift(studentChange)
             }
             if (change.type === "modified") {
-                console.log("Modified student: ", studentChange);
+                console.log("Modified task: ", studentChange);
                 let index = this.students.findIndex(student => student.id === studentChange.id );
                 this.students[index].score = studentChange.score;
             }
             if (change.type === "removed") {
-                console.log("Removed student: ", studentChange);
-            }
-        });
-    });
-
-    db.collection("tags")
-    .onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-          let tagChange = change.doc.data()
-          tagChange.id = change.doc.id
-            if (change.type === "added") {
-                console.log("New tag ", tagChange);
-                this.tags.unshift(tagChange)
-            }
-            if (change.type === "modified") {
-                console.log("Modified tag: ", tagChange);
-            }
-            if (change.type === "removed") {
-                console.log("Removed tag: ", tagChange);
+                console.log("Removed task: ", studentChange);
             }
         });
     });

@@ -6,6 +6,7 @@
             <q-item v-for="entry in entries" :key="entry.id">
                 <h4>{{ entry.comment }}</h4>
                 <h6>{{ entry.score }}</h6>
+                <q-item v-for="tag in entry.tags" :key="tag.tag">{{tag}}</q-item>
                 <q-btn @click="deleteEntry(entry.id)" label="delete"/>
             </q-item>
         </q-list>

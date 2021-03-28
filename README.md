@@ -32,3 +32,11 @@ Score is now being changed based on deletion, but currently the delete is still 
 
 Delete now fully functional. It was a typo all along. 
 
+Next steps: Add tags. A 'add tag' dialog. Get the list of tags in the popover dialog. Use q-fab for the add tag button.
+
+Code is getting too large in pages. Need to split out into components or something. Going to start with making a new page for adding tags, and trying to import components.
+
+Working to refactor, but getting complicated. Classlist needs to pass down the button press event to the studententry component. Probably not that complicated, but holding off for now.
+
+Tags functional. Need a way to make new tags, and a way to display tags on the student page.
+
