@@ -2,6 +2,8 @@
 
 Simple todo app using Quasar & Firebase.
 
+NOTE: boot directory removed from Github.
+
 ## Install the dependencies
 ```bash
 npm install
