@@ -38,5 +38,13 @@ Code is getting too large in pages. Need to split out into components or somethi
 
 Working to refactor, but getting complicated. Classlist needs to pass down the button press event to the studententry component. Probably not that complicated, but holding off for now.
 
+### 3/28/21
+
 Tags functional. Need a way to make new tags, and a way to display tags on the student page.
+
+Create a new component for tag entry. Try to open it in a different Qdialog. Should be dead simple.
+
+Tag entry component in progess. Need to finish delete function, then try to inject into the class page with a dialog.
+
+Tag entry injected into a dialog with the dialog plugin. A bit tricky to do, but seems to work well for this application at least. 
 
