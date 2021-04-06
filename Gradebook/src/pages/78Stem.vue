@@ -129,7 +129,7 @@ export default {
       let newEntry = {
         comment: this.newComment,
         score: -1,
-        tags: newTagList
+        tags: this.newTagList
       }
       db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
