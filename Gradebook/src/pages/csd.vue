@@ -90,7 +90,7 @@ export default {
       this.popoverData.lastName = this.students[index].lastName;
       this.popoverData.score = this.students[index].score; 
       this.popoverData.id = this.students[index].id;
-      this.studentLink = "student/" + this.students[index].id;
+      this.studentLink = "student/" + this.classID + "/" + this.students[index].id;
       console.log(this.studentLink)
     },
     newEntryPos(studentID){
@@ -129,7 +129,7 @@ export default {
       let newEntry = {
         comment: this.newComment,
         score: -1,
-        tags: newTagList
+        tags: this.newTagList
       }
       db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {

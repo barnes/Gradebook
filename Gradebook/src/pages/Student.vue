@@ -33,7 +33,7 @@ export default {
   methods: {
       deleteEntry(entryID){
         let index = this.entries.findIndex(entry => entry.id === entryID );
-        let studentRef = db.collection("students").doc(this.$route.params.id)
+        let studentRef = db.collection(this.$route.params.classID).doc(this.$route.params.id)
         if(this.entries[index].score === 1){
             console.log("pos");
             studentRef.update({
@@ -60,7 +60,7 @@ export default {
                 console.error("Error updating document: ", error);
             });
         }
-        db.collection("students").doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
+        db.collection(this.$route.params.classID).doc(this.$route.params.id).collection("entries").doc(entryID).delete().then(() => {
             console.log("Document successfully deleted!");
             console.log(entryID)
             //this.entries.splice(index,1)
@@ -70,7 +70,7 @@ export default {
       }
   },
   mounted() {
-    db.collection("students").doc(this.$route.params.id)
+    db.collection(this.$route.params.classID).doc(this.$route.params.id)
     .onSnapshot((doc) => {
         console.log("Current data: ", doc.data());
         console.log(doc.data().firstName);
@@ -78,7 +78,7 @@ export default {
         this.student.lastName = doc.data().lastName;
         this.student.score = doc.data().score;
     });
-    db.collection("students").doc(this.$route.params.id).collection("entries")
+    db.collection(this.$route.params.classID).doc(this.$route.params.id).collection("entries")
     .onSnapshot((snapshot) => {
         snapshot.docChanges().forEach((change) => {
           let entryChange = change.doc.data()

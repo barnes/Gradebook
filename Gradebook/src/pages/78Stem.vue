@@ -90,7 +90,7 @@ export default {
       this.popoverData.lastName = this.students[index].lastName;
       this.popoverData.score = this.students[index].score; 
       this.popoverData.id = this.students[index].id;
-      this.studentLink = "student/" + this.students[index].id;
+      this.studentLink = "student/" + this.classID + "/" + this.students[index].id;
       console.log(this.studentLink)
     },
     newEntryPos(studentID){
