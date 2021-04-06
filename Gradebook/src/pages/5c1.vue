@@ -9,7 +9,7 @@
     </q-dialog>
 
     <div class="q-pa-sm">
-        <h2>7-8 CS:D Q4</h2>
+        <h2>5th Grade Cycle 1 Q4</h2>
     </div>
   <div class="q-pa-md row text-white q-gutter-md">
       
@@ -51,7 +51,7 @@ export default {
   },
   data () {
     return{
-      classID: 'csd',
+      classID: '5c1',
       students: [],
       tags: [],
       popover: false,

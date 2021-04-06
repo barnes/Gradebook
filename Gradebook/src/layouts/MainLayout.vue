@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh lpR lFf">
+  <q-layout view="hHh LpR fFf">
 
     <q-header bordered class="bg-primary text-white">
       <q-toolbar>
@@ -31,6 +31,11 @@
         <q-item clickable v-ripple to="/csd">
           <q-item-section>
             CSD
+          </q-item-section>
+        </q-item>
+         <q-item clickable v-ripple to="/5c1">
+          <q-item-section>
+            5th Grade Cycle 1
           </q-item-section>
         </q-item>
       </q-list>

@@ -54,8 +54,12 @@ Next steps: Clean up functionality. Do some simple styling to make it look decen
 ### 4/5/21
 Prepping to use in class this semester. Going to more or less brute force it. Student entry on index.
 TODO:
-* clean up studentEntry component. Enter to add a student, single line with some code to split the string.
+* DONE: clean up studentEntry component. Enter to add a student, single line with some code to split the string.
 * DONE: passdown classID prop to student page.
 * add rest of classes for this semester
 * DONE: deploy
 
+### 4/6/21
+Student entry cleaned up and functional with single line input.
+
+Adding classes manually working easily enough. Want to work on doing these route programatically soon.

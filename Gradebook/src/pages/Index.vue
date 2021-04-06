@@ -5,7 +5,7 @@
     <q-dialog ref="dialog" persistant>
        <tagEntry></tagEntry>
     </q-dialog>
-    <studentEntry></studentEntry>
+    <studentEntrySingleLine></studentEntrySingleLine>
     </div>
   </q-page>
     
@@ -16,11 +16,13 @@ import db from 'src/boot/firebase'
 import tagEntry from '../components/tagEntry'
 import studentEntry from '../components/studentEntry'
 import StudentEntry from '../components/studentEntry.vue'
+import studentEntrySingleLine from '../components/studentEntrySingleLine.vue'
 export default {
   
   components: {
     tagEntry,
-    studentEntry
+    //studentEntry,
+    studentEntrySingleLine
   }, 
   methods: {
     showTagEntry () {
