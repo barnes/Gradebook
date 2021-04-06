@@ -8,6 +8,8 @@ const routes = [
       { path: 'test', component: () => import('pages/Test.vue')},
       { path: 'class', component: () => import('pages/Class.vue')},
       { path: 'class2', component: () => import('pages/Class2.vue')},
+      { path: '78stem', component: () => import('pages/78Stem.vue')},
+      { path: 'csd', component: () => import('pages/csd.vue')},
       { path: 'student/:id', component: () => import('pages/Student.vue')}
     ]
   },

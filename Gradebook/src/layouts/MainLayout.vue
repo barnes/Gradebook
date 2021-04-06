@@ -1,31 +1,44 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="lHh lpR lFf">
 
-    <q-header bordered class="bg-primary text-white" height-hint="98">
+    <q-header bordered class="bg-primary text-white">
       <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="left = !left" />
+
         <q-toolbar-title>
           Gradebook
         </q-toolbar-title>
       </q-toolbar>
-
-      <!-- <q-tabs align="left">
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
-      </q-tabs> -->
     </q-header>
+
+    <q-drawer show-if-above v-model="left" side="left" bordered>
+      <q-list dense bordered padding class="rounded-borders">
+        <q-item clickable v-ripple to="/">
+          <q-item-section>
+            Home
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/class">
+          <q-item-section>
+            Example Class
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/78stem">
+          <q-item-section>
+            7-8 STEM
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/csd">
+          <q-item-section>
+            CSD
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
-
-    <!-- <q-footer bordered class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          Title
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer> -->
 
   </q-layout>
 </template>
@@ -34,6 +47,7 @@
 export default {
   data () {
     return {
+      left: false
     }
   }
 }

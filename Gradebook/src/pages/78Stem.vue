@@ -1,5 +1,6 @@
 <template>
 <q-page>
+    
   <q-page-sticky position="bottom-right" :offset="[18, 18]">
     <q-btn fab icon="add" color="accent" @click="showTagEntry"/>
   </q-page-sticky>
@@ -7,7 +8,11 @@
        <tagEntry></tagEntry>
     </q-dialog>
 
+    <div class="q-pa-sm">
+        <h2>7-8 STEM Q4</h2>
+    </div>
   <div class="q-pa-md row text-white q-gutter-md">
+      
     <div v-for="student in students" :key="student.name" @click="popoverLaunch(student.id)">
       <q-btn round size="3rem" color="primary" :label="student.firstName.charAt(0) + student.lastName.charAt(0)" />
     </div>
@@ -46,6 +51,7 @@ export default {
   },
   data () {
     return{
+      classID: '78stem',
       students: [],
       tags: [],
       popover: false,
@@ -94,7 +100,7 @@ export default {
         score: 1,
         tags: this.newTagList
       }
-      db.collection("students").doc(studentID).collection("entries").add(newEntry)
+      db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
          console.log("Document written with ID: ", docRef.id)
        })
@@ -104,7 +110,7 @@ export default {
        this.newComment = '';
        this.newTagList = [];
 
-       let studentRef = db.collection("students").doc(studentID);
+       let studentRef = db.collection(this.classID).doc(studentID);
        let newScore = this.popoverData.score+1;
        this.popoverData.score = newScore;
        return studentRef.update({
@@ -125,7 +131,7 @@ export default {
         score: -1,
         tags: newTagList
       }
-      db.collection("students").doc(studentID).collection("entries").add(newEntry)
+      db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
          console.log("Document written with ID: ", docRef.id)
        })
@@ -135,7 +141,7 @@ export default {
        this.newComment = '';
        this.newTagList = [];
 
-       let studentRef = db.collection("students").doc(studentID);
+       let studentRef = db.collection(this.classID).doc(studentID);
        let newScore = this.popoverData.score-1;
        this.popoverData.score = newScore;
        return studentRef.update({
@@ -153,7 +159,7 @@ export default {
 
   },
   mounted() {
-    db.collection("students").orderBy('score')
+    db.collection(this.classID).orderBy('score')
     .onSnapshot((snapshot) => {
         snapshot.docChanges().forEach((change) => {
           let studentChange = change.doc.data()

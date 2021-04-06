@@ -48,3 +48,14 @@ Tag entry component in progess. Need to finish delete function, then try to inje
 
 Tag entry injected into a dialog with the dialog plugin. A bit tricky to do, but seems to work well for this application at least. 
 
+### 3/31/21
+Next steps: Clean up functionality. Do some simple styling to make it look decent. Clean up navigation. When the single class looks good, begin migration to new project with the auth built in. When auth is done, move onto creating an account page, add class page, etc. 
+
+### 4/5/21
+Prepping to use in class this semester. Going to more or less brute force it. Student entry on index.
+TODO:
+* clean up studentEntry component. Enter to add a student, single line with some code to split the string.
+* passdown classID prop to student page.
+* add rest of classes for this semester
+* deploy
+
