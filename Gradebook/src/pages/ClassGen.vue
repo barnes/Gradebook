@@ -95,7 +95,7 @@ export default {
         score: 1,
         tags: this.newTagList
       }
-      db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
+      db.collection("classes").doc(this.classID).collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
          console.log("Document written with ID: ", docRef.id)
        })
@@ -105,7 +105,7 @@ export default {
        this.newComment = '';
        this.newTagList = [];
 
-       let studentRef = db.collection(this.classID).doc(studentID);
+       let studentRef = db.collection("classes").doc(this.classID).collection("students").doc(studentID);
        let newScore = this.popoverData.score+1;
        this.popoverData.score = newScore;
        return studentRef.update({
@@ -126,7 +126,7 @@ export default {
         score: -1,
         tags: this.newTagList
       }
-      db.collection(this.classID).doc(studentID).collection("entries").add(newEntry)
+      db.collection("classes").doc(this.classID).collection("students").doc(studentID).collection("entries").add(newEntry)
        .then((docRef) => {
          console.log("Document written with ID: ", docRef.id)
        })
@@ -136,7 +136,7 @@ export default {
        this.newComment = '';
        this.newTagList = [];
 
-       let studentRef = db.collection(this.classID).doc(studentID);
+       let studentRef = db.collection("classes").doc(this.classID).collection("students").doc(studentID);
        let newScore = this.popoverData.score-1;
        this.popoverData.score = newScore;
        return studentRef.update({
@@ -154,9 +154,10 @@ export default {
 
   },
   mounted() {
+    this.classID = this.$route.params.classID
     console.log("CLASSID");
     console.log(this.classID);
-    db.collection(this.classID).orderBy('score')
+    db.collection("classes").doc(this.classID).collection("students").orderBy('score')
     .onSnapshot((snapshot) => {
         snapshot.docChanges().forEach((change) => {
           let studentChange = change.doc.data()
