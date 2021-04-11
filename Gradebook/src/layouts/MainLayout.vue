@@ -40,7 +40,7 @@
         </q-item>
       </q-list>
       <q-list dense bordered padding class="rounded-borders">
-        <q-item v-for="clas in classes" :key="clas.id" clickable v-ripple :to="clas.classID">
+        <q-item v-for="clas in classes" :key="clas.id" clickable v-ripple :to="'/class/' + clas.classID">
           <q-item-section>
             <p>{{clas.classID}}</p>
           </q-item-section>
