@@ -39,6 +39,13 @@
           </q-item-section>
         </q-item>
       </q-list>
+      <q-list dense bordered padding class="rounded-borders">
+        <q-item v-for="clas in classes" :key="clas.id" clickable v-ripple :to="clas.classID">
+          <q-item-section>
+            <p>{{clas.classID}}</p>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -49,11 +56,31 @@
 </template>
 
 <script>
+import db from '../boot/firebase'
 export default {
   data () {
     return {
-      left: false
+      left: false,
+      classes: []
     }
+  },
+  mounted() {
+    db.collection("classes").onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          let dbChange = change.doc.data()
+            if (change.type === "added") {
+                console.log("New class ", dbChange);
+                this.classes.unshift(dbChange);
+            }
+            if (change.type === "modified") {
+                console.log("Modified class: ", studentChange);
+            }
+            if (change.type === "removed") {
+                console.log("Removed class: ", studentChange);
+            }
+        });
+    });
+    
   }
 }
 </script>

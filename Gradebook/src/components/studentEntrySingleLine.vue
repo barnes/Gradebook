@@ -69,14 +69,21 @@ export default {
       submitClass() {
         
         this.students.forEach(student => {
-          db.collection(this.className).add(student)
+          db.collection("classes").doc(this.className).collection("students").add(student)
             .then((docRef) => {
               console.log("Document written with ID: ", docRef.id)
           })
           .catch((error) => {
               console.error("Error adding document: ", error)
           });
-        })
+        });
+        db.collection("classes").doc(this.className).set({classID: this.className})
+            .then(() => {
+              console.log("Document successfully written!");
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
       }
     },
     mounted() {
