@@ -70,3 +70,5 @@ Class route now takes in class ID and functions well. Need to programatically ge
 Going to work on tables and appearances next.
 
 Need to update some data validation (classID in student entry form, student name should drop bad characters, etc.)
+
+Moving between classes does not reload the page. Not sure why. 
