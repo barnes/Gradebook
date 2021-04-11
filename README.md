@@ -68,3 +68,5 @@ Adding classes manually working easily enough. Want to work on doing these route
 Class route now takes in class ID and functions well. Need to programatically generate the menu for all classes in the DB. I have the layout reading from the DB, just need a way to generate the links. ALL SET.
 
 Going to work on tables and appearances next.
+
+Need to update some data validation (classID in student entry form, student name should drop bad characters, etc.)
