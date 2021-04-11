@@ -11,7 +11,8 @@ const routes = [
       { path: '78stem', component: () => import('pages/78Stem.vue')},
       { path: 'csd', component: () => import('pages/csd.vue')},
       { path: '5c1', component: () => import('pages/5c1.vue')},
-      { path: 'student/:classID/:id', component: () => import('pages/Student.vue')}
+      { path: 'student/:classID/:id', component: () => import('pages/Student.vue')},
+      { path: 'class/:classID/', component: () => import('pages/ClassGen.vue')}
     ]
   },
 

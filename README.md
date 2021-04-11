@@ -63,3 +63,8 @@ TODO:
 Student entry cleaned up and functional with single line input.
 
 Adding classes manually working easily enough. Want to work on doing these route programatically soon.
+
+### 4/11/21
+Class route now takes in class ID and functions well. Need to programatically generate the menu for all classes in the DB.
+
+Going to work on tables and appearances next.
