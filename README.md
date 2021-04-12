@@ -71,4 +71,4 @@ Going to work on tables and appearances next.
 
 Need to update some data validation (classID in student entry form, student name should drop bad characters, etc.)
 
-Moving between classes does not reload the page. Not sure why. 
+Moving between classes does not reload the page. Not sure why. FIXED NOW. 
