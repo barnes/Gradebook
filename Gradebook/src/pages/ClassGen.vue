@@ -194,7 +194,10 @@ export default {
             }
         });
     });
-}
+  },
+  updated() {
+    this.classID = this.$route.params.classID;
+  }
 
 }
 </script>

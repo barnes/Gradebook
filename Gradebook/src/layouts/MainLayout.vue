@@ -12,33 +12,7 @@
     </q-header>
 
     <q-drawer show-if-above v-model="left" side="left" bordered>
-      <q-list dense bordered padding class="rounded-borders">
-        <q-item clickable v-ripple to="/">
-          <q-item-section>
-            Home
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple to="/class">
-          <q-item-section>
-            Example Class
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple to="/78stem">
-          <q-item-section>
-            7-8 STEM
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple to="/csd">
-          <q-item-section>
-            CSD
-          </q-item-section>
-        </q-item>
-         <q-item clickable v-ripple to="/5c1">
-          <q-item-section>
-            5th Grade Cycle 1
-          </q-item-section>
-        </q-item>
-      </q-list>
+      
       <q-list dense bordered padding class="rounded-borders">
         <q-item clickable v-ripple to="/">
           <q-item-section>
@@ -47,14 +21,14 @@
         </q-item>
         <q-item v-for="clas in classes" :key="clas.id" clickable v-ripple :to="'/class/' + clas.classID">
           <q-item-section>
-            <p>{{clas.classID}}</p>
+            {{clas.classID}}
           </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view :key="$route.path"></router-view>
     </q-page-container>
 
   </q-layout>
