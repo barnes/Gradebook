@@ -7,9 +7,19 @@
        <tagEntry></tagEntry>
     </q-dialog>
 
-  <div class="q-pa-md row text-white q-gutter-md">
+  <!-- <div class="q-pa-md row text-white q-gutter-md">
     <div v-for="student in students" :key="student.name" @click="popoverLaunch(student.id)">
       <q-btn round size="3rem" color="primary" :label="student.firstName.charAt(0) + student.lastName.charAt(0)" /> 
+    </div>
+  </div> -->
+
+  <div class="q-pa-md row text-white q-gutter-md">
+    <div v-for="student in students" :key="student.name" @click="popoverLaunch(student.id)">
+      <q-card class="my-card">
+      <q-card-section>
+        <h4>{{ student.firstName }} <br /> {{ student.lastName }}</h4>
+      </q-card-section>
+    </q-card>
     </div>
   </div>
 

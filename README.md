@@ -72,3 +72,13 @@ Going to work on tables and appearances next.
 Need to update some data validation (classID in student entry form, student name should drop bad characters, etc.)
 
 Moving between classes does not reload the page. Not sure why. FIXED NOW. 
+
+### 4/12/21
+
+No time to work today, but notes from use today: I'd love an attendance component. Pops over, check present students and save. Should be eaasy to implement.
+
+Want add a multiple select students, or select all. Than its a for loop to iterate through selected students and punch those entries into all students. Should be easy to implement in the backend, but how to do the multiple selection?
+
+### 4/14/21
+
+Adding some new views to class page. Want to clean up layouts overall.
